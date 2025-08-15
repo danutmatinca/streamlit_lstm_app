@@ -2,6 +2,8 @@
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge.svg)](https://lstm-ai-predictor.streamlit.app)
 
 
+
+
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Stars](https://img.shields.io/github/stars/danut-matinca/streamlit_lstm_app?style=social)
