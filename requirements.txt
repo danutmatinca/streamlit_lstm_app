@@ -1,0 +1,10 @@
+streamlit>=1.36
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.4
+tensorflow-cpu==2.16.*
+yfinance>=0.2.52
+curl_cffi>=0.6.2
+matplotlib>=3.8
+plotly>=5.22
+python-dotenv>=1.0

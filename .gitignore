@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.Python
+
+# Environments
+.venv/
+venv/
+env/
+
+# Build/Dist
+build/
+dist/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
