@@ -10,7 +10,7 @@ import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 # -- Page setup & Theme tweaks --
-# st.set_page_config(layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 st.set_page_config(initial_sidebar_state="expanded")
 st.set_page_config(page_title="KI-Börsenprognose (LSTM) – Demo", layout="wide", page_icon="📈")
 st.markdown(
