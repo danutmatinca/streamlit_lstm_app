@@ -9,10 +9,20 @@ import yfinance as yf
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
+is_narrow = st.viewport_width < 800 if hasattr(st, "viewport_width") else False  # einfache Heuristik
+if is_narrow:
+    with st.expander("Einstellungen (mobil)"):
+        # dieselben Inputs wie in der Sidebar, oder ein Minimalset
+        pass
 # -- Page setup & Theme tweaks --
-st.set_page_config(layout="wide", initial_sidebar_state="expanded")
-st.set_page_config(initial_sidebar_state="expanded")
-st.set_page_config(page_title="KI-Börsenprognose (LSTM) – Demo", layout="wide", page_icon="📈")
+# st.set_page_config(layout="wide", initial_sidebar_state="expanded")
+# st.set_page_config(initial_sidebar_state="expanded")
+# st.set_page_config(page_title="KI-Börsenprognose (LSTM) – Demo", layout="wide", page_icon="📈")
+st.set_page_config(
+    page_title="KI-Börsenprognose (LSTM) – Demo",
+    layout="wide",
+    initial_sidebar_state="expanded"  # << Sidebar standardmäßig geöffnet
+)
 st.markdown(
     '''
     <style>
@@ -34,7 +44,9 @@ st.markdown(
 )
 
 # -- Sidebar --
-st.sidebar.title("⚙️ Einstellungen")
+# st.sidebar.title("⚙️ Einstellungen")
+with st.sidebar:
+    st.title("⚙️ Einstellungen")
 ticker = st.sidebar.text_input("Ticker (Yahoo Finance)", value="AAPL")
 start = st.sidebar.date_input("Startdatum", value=dt.date.today() - dt.timedelta(days=365*5))
 end = st.sidebar.date_input("Enddatum", value=dt.date.today())
