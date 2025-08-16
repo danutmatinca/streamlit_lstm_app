@@ -9,8 +9,33 @@ import yfinance as yf
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
+import streamlit as st
+
+# 1) Query-Param lesen, um Sidebar bei Bedarf geöffnet zu starten
+try:
+    params = st.query_params          # neuere Streamlit-Versionen
+    open_flag = params.get("open", None) is not None
+except Exception:
+    params = None
+    from urllib.parse import parse_qs, urlparse
+    open_flag = "open=1" in st.experimental_get_query_params()
+
+st.set_page_config(
+    page_title="KI-Börsenprognose – LSTM Demo",
+    layout="wide",
+    initial_sidebar_state="expanded" if open_flag else "collapsed",
+)
+
+# 2) Optional: Query-Param wieder entfernen, damit die URL sauber bleibt
+try:
+    if params and "open" in params:
+        st.query_params.clear()
+except Exception:
+    st.experimental_set_query_params()  # leert die Params bei älteren Versionen
+
+
 # -- Page setup & Theme tweaks --
-st.set_page_config(page_title="KI-Börsenprognose (LSTM) – Demo", layout="wide", page_icon="📈")
+# st.set_page_config(page_title="KI-Börsenprognose (LSTM) – Demo", layout="wide", page_icon="📈")
 
 st.markdown(
     '''
@@ -31,6 +56,36 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.markdown(
+    """
+    <style>
+      /* Schwebender »-Button links oben */
+      #sb-handle {
+        position: fixed; top: 12px; left: 10px; z-index: 1000;
+        padding: 6px 10px; border-radius: 9999px;
+        background: rgba(30,41,59,.92); border: 1px solid rgba(255,255,255,.2);
+        color: #fff; font-weight: 700; cursor: pointer; user-select: none;
+      }
+    </style>
+    <div id="sb-handle"><a href="?open=1" style="color:inherit;text-decoration:none">»</a></div>
+
+    <script>
+      // Handle nur zeigen, wenn Sidebar wirklich eingeklappt ist
+      const handle = document.getElementById('sb-handle');
+      function updateHandle(){
+        const sb = parent.document.querySelector('section[data-testid="stSidebar"]');
+        if (!sb || !handle) return;
+        const visible = sb.offsetWidth > 0;        // Sidebar sichtbar?
+        handle.style.display = visible ? 'none' : 'block';
+      }
+      new ResizeObserver(updateHandle).observe(document.body);
+      updateHandle();
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 # -- Sidebar --
 st.sidebar.title("⚙️ Einstellungen")
