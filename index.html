@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>streamlit_lstm_app – KI‑Börsenprognose (LSTM)</title>
+  <meta name="description" content="Streamlit-Demo: Yahoo Finance Daten laden, LSTM trainieren, Vorhersagen anzeigen.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f172a;--panel:#0b1220;--muted:#94a3b8;--acc:#22d3ee;--text:#e5e7eb;}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0f172a 0%,#111827 100%);color:var(--text);}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px;}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    .card{background:var(--panel);border:1px solid #1f2937;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    h1{font-size:clamp(28px,4vw,44px);margin:0 0 8px;font-weight:800;letter-spacing:.2px}
+    p.lead{font-size:clamp(15px,1.6vw,18px);color:var(--muted);margin:8px 0 16px}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    .btn{display:inline-block;padding:12px 16px;border-radius:12px;border:1px solid #334155;text-decoration:none;color:var(--text);font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,#06b6d4,#22d3ee);color:#0b1220}
+    img.preview{width:100%;border-radius:14px;border:1px solid #1f2937}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+    .feature{padding:14px;border-radius:12px;border:1px dashed #334155}
+    footer{margin:28px 0 8px;color:var(--muted);font-size:14px;text-align:center}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>streamlit_lstm_app</h1>
+        <p class="lead">Interaktive Streamlit‑App: Kursdaten laden → LSTM trainieren → Vorhersagen visualisieren. 
+          Reines Lern‑/Demo‑Projekt – keine Anlageberatung.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://lstm-ai-predictor.streamlit.app" target="_blank">Starte die App online</a>
+          <a class="btn" href="./">Zum Repository</a>
+          <a class="btn" href="https://streamlit.io">Was ist Streamlit?</a>
+          <a class="btn" href="https://www.tensorflow.org/">TensorFlow</a>
+        </div>
+        <div class="grid">
+          <div class="feature">LSTM‑Netz mit EarlyStopping</div>
+          <div class="feature">Test‑Prognose & T+1‑Forecast</div>
+          <div class="feature">Skripte für Linux & Windows</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="preview" src="screenshot_app.png" alt="App Screenshot">
+      </div>
+    </div>
+    <footer>
+      © 2025 Danut Matinca • Repo: https://github.com/danutmatinca/streamlit_lstm_app
+    </footer>
+  </div>
+</body>
+</html>
